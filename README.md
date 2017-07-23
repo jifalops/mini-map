@@ -39,7 +39,7 @@ Note: The demo is not working, but the element works when installed via bower.
 
 ```html
 <input id="lat" value="1"/>lat<br/>
-<input id="lng" value="1"/>lat<br/>
+<input id="lng" value="1"/>lng<br/>
 <input id="refLat" value="2"/>refLat<br/>
 <input id="refLng" value="2"/>refLng<br/>
 <button onclick="update()">Update</button><br/>
