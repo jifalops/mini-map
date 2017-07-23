@@ -80,7 +80,7 @@
         hidden$="[[directionsEnabled]]"
         latitude="[[lat]]"
         longitude="[[lng]]"
-        icon="marker.png"
+        icon="[[icon]]"
         click-events
         on-google-map-marker-click="_markerClicked"
         map="[[map]]">
@@ -239,6 +239,14 @@ Polymer({
       type: Boolean,
       value: false
     },
+
+    /**
+     * The map marker icon to use.
+     */
+     icon: {
+       type: String,
+       value: '/bower_components/mini-map/marker.png'
+     },
 
     _hasRefCoords: {
       type: Boolean,
