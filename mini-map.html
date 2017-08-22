@@ -17,6 +17,8 @@
   `--mini-map-icon-width` | Width of the launch icon | 8px
   `--mini-map-directions` | Mixin applied to the word "Directions" | {}
   `--mini-map-corner-color` | Resizable corner gradient color | #333
+  `--mini-map-handle-size` | Handle size for resizable edges | 8px;
+  `--mini-map-handle-padding` | Padding for resizable edges | 8px;
 -->
 <dom-module id="mini-map">
 <template>
@@ -28,14 +30,19 @@
       --mini-map-icon-height: 8px;
       --mini-map-icon-width: 8px;
       --mini-map-corner-color: #333;
+      --mini-map-handle-size: 8px;
+      --mini-map-handle-padding: 8px;
     }
     drag-resize {
       --drag-resize-corner-color: var(--mini-map-corner-color);
+      --drag-resize-handle-size: var(--mini-map-handle-size);
+      --drag-resize-edge-padding: var(--mini-map-handle-padding);
     }
     google-map {
       height: var(--mini-map-height);
       width: var(--mini-map-width);
       z-index: 1;
+      @apply --mini-map-map;
     }
     iron-icon {
       height: var(--mini-map-icon-height);
