@@ -1,7 +1,9 @@
 {
   "name": "mini-map",
   "description": "A drag-to-resize google-map with optional directions.",
-  "authors": ["Jacob Phillips (https://github.com/jifalops)"],
+  "authors": [
+    "Jacob Phillips (https://github.com/jifalops)"
+  ],
   "license": "MIT",
   "main": "mini-map.html",
   "keywords": [
@@ -15,11 +17,11 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "iron-icon": "^2.0.0",
-    "resize-aware": "^1.9.1",
     "google-map": "^1.2.0",
     "iron-iconset-svg": "^2.0.1",
     "text-toggle": "jifalops/text-toggle#^0.2.2",
-    "iron-collapse-button": "jifalops/iron-collapse-button#^1.0.0"
+    "iron-collapse-button": "jifalops/iron-collapse-button#^1.0.0",
+    "drag-resize": "jifalops/drag-resize#^0.2.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

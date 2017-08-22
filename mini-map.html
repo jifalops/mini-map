@@ -2,7 +2,7 @@
 <link rel="import" href="../google-map/google-map.html">
 <link rel="import" href="../google-map/google-map-marker.html">
 <link rel="import" href="../google-map/google-map-directions.html">
-<link rel="import" href="../resize-aware/resize-aware.html">
+<link rel="import" href="../drag-resize/drag-resize.html">
 <link rel="import" href="../text-toggle/text-toggle.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-collapse-button/iron-collapse-button.html">
@@ -22,36 +22,20 @@
   <style>
     :host {
       display: block;
-    }
-    #container {
-      resize: both;
-      height: var(--mini-map-height, 100px);
-      width: var(--mini-map-width, 100px);
-      padding: 0 8px 8px 0;
-      overflow: auto;
-      position: relative;
+      --mini-map-height: 100px;
+      --mini-map-width: 100px;
+      --mini-map-icon-height: 8px;
+      --mini-map-icon-width: 8px;
     }
     google-map {
-      height: 100%;
-      width: 100%;
-      z-index: 1;
-    }
-    resize-aware {
-      height: 100%;
-      width: 100%;
-      visibility: hidden;
-      z-index: 0;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      height: var(--mini-map-height);
+      width: var(--mini-map-width);
     }
     iron-icon {
-      height: var(--mini-map-icon-height, 8px);
-      width: var(--mini-map-icon-width, 8px);
-      --iron-icon-height: var(--mini-map-icon-height, 8px);
-      --iron-icon-width: var(--mini-map-icon-width, 8px);
+      height: var(--mini-map-icon-height);
+      width: var(--mini-map-icon-width);
+      --iron-icon-height: var(--mini-map-icon-height);
+      --iron-icon-width: var(--mini-map-icon-width);
       vertical-align: super;
     }
     google-map-marker a {
@@ -65,7 +49,7 @@
       @apply --mini-map-directions;
     }
   </style>
-  <div id="container">
+  <drag-resize drag="none" resize="[[resize]]" on-resize="notifyResize">
     <google-map
       id="map"
       latitude="[[lat]]"
@@ -86,13 +70,12 @@
         map="[[map]]">
         <template is="dom-if" if="[[!noDirections]]">
           <a href$="[[directionsHref]]"
-            target="_blank">Directions<iron-icon icon="mini-map:launch"></iron-icon>
+            target="_blank">Directions<iron-icon icon="mini-map-icons:launch"></iron-icon>
           </a>
         </template>
       </google-map-marker>
     </google-map>
-    <resize-aware on-element-size-changed="notifyResize"></resize-aware>
-  </div>
+  </drag-resize>
 
   <template is="dom-if" if="[[directionsEnabled]]">
     <google-map-directions
@@ -108,7 +91,7 @@
   <a
     hidden$="[[_hasRefCoords]]"
     href$="[[directionsHref]]"
-    target="_blank">Directions<iron-icon icon="mini-map:launch"></iron-icon>
+    target="_blank">Directions<iron-icon icon="mini-map-icons:launch"></iron-icon>
   </a>
   <template is="dom-if" if="[[_hasRefCoords]]">
     <text-toggle
@@ -124,7 +107,7 @@
           <span>([[directions.duration]])</span>
           <a
             href$="[[directionsHref]]"
-            target="_blank">launch<iron-icon icon="launch">
+            target="_blank">launch<iron-icon icon="mini-map-icons:launch">
           </iron-icon></a>
         </div>
         <ol slot="collapse-content">
@@ -252,15 +235,21 @@ Polymer({
       type: Boolean,
       value: false,
       computed: '_computeHasRefCoords(refLat, refLng)'
-    }
+    },
+    /**
+      * Which edges allow resize.
+      * Any combination of `top`, `bottom`, `left`, or `right`; or `none`.
+      * A corner is enabled when both of its adjacent sides are enabled.
+      */
+    resize: {
+      type: String,
+      value: 'bottom right',
+      reflectToAttribute: true
+    },
   },
 
   notifyResize: function() {
     this.$.map.notifyResize();
-    // Fix for vertical height changes not being picked up.
-    // `resize-aware` has 0 height because it is empty
-    // (bug where the map is invisible if placed inside).
-    this.debounce('extra-resize', () => this.$.map.notifyResize(), 1000);
   },
 
   _coords: function(lat, lng) {
