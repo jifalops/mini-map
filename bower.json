@@ -21,7 +21,7 @@
     "iron-iconset-svg": "^2.0.1",
     "text-toggle": "jifalops/text-toggle#^0.2.2",
     "iron-collapse-button": "jifalops/iron-collapse-button#^1.0.0",
-    "drag-resize": "jifalops/drag-resize#^0.2.0"
+    "drag-resize": "jifalops/drag-resize#^0.2"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
