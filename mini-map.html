@@ -16,6 +16,7 @@
   `--mini-map-icon-height` | Height of the launch icon | 8px
   `--mini-map-icon-width` | Width of the launch icon | 8px
   `--mini-map-directions` | Mixin applied to the word "Directions" | {}
+  `--mini-map-corner-color` | Resizable corner gradient color | #333
 -->
 <dom-module id="mini-map">
 <template>
@@ -26,6 +27,10 @@
       --mini-map-width: 100px;
       --mini-map-icon-height: 8px;
       --mini-map-icon-width: 8px;
+      --mini-map-corner-color: #333;
+    }
+    drag-resize {
+      --drag-resize-corner-color: var(--mini-map-corner-color);
     }
     google-map {
       height: var(--mini-map-height);
