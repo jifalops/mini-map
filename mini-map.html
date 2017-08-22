@@ -28,7 +28,6 @@
       --mini-map-icon-width: 8px;
     }
     google-map {
-      display: block;
       height: var(--mini-map-height);
       width: var(--mini-map-width);
     }
@@ -50,33 +49,35 @@
       @apply --mini-map-directions;
     }
   </style>
-  <drag-resize drag="none" resize="[[resize]]" on-resize="notifyResize">
-    <google-map
-      id="map"
-      latitude="[[lat]]"
-      longitude="[[lng]]"
-      api-key="[[apiKey]]"
-      disable-default-ui
-      map="{{map}}"
-      on-google-map-ready="_mapReady"
-      zoom="[[zoom]]">
-      <google-map-marker
-        id="marker"
-        hidden$="[[directionsEnabled]]"
+  <div>
+    <drag-resize drag="none" resize="[[resize]]" on-resize="notifyResize">
+      <google-map
+        id="map"
         latitude="[[lat]]"
         longitude="[[lng]]"
-        icon="[[icon]]"
-        click-events
-        on-google-map-marker-click="_markerClicked"
-        map="[[map]]">
-        <template is="dom-if" if="[[!noDirections]]">
-          <a href$="[[directionsHref]]"
-            target="_blank">Directions<iron-icon icon="mini-map-icons:launch"></iron-icon>
-          </a>
-        </template>
-      </google-map-marker>
-    </google-map>
-  </drag-resize>
+        api-key="[[apiKey]]"
+        disable-default-ui
+        map="{{map}}"
+        on-google-map-ready="_mapReady"
+        zoom="[[zoom]]">
+        <google-map-marker
+          id="marker"
+          hidden$="[[directionsEnabled]]"
+          latitude="[[lat]]"
+          longitude="[[lng]]"
+          icon="[[icon]]"
+          click-events
+          on-google-map-marker-click="_markerClicked"
+          map="[[map]]">
+          <template is="dom-if" if="[[!noDirections]]">
+            <a href$="[[directionsHref]]"
+              target="_blank">Directions<iron-icon icon="mini-map-icons:launch"></iron-icon>
+            </a>
+          </template>
+        </google-map-marker>
+      </google-map>
+    </drag-resize>
+  </div>
 
   <template is="dom-if" if="[[directionsEnabled]]">
     <google-map-directions
