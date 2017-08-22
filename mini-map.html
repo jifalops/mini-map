@@ -35,6 +35,7 @@
     google-map {
       height: var(--mini-map-height);
       width: var(--mini-map-width);
+      z-index: 1;
     }
     iron-icon {
       height: var(--mini-map-icon-height);
@@ -291,7 +292,7 @@ Polymer({
   _directionsChanged: function(e, detail) {
     if (detail && detail.response) {
       this._setDirections(this._parseDirectionsResponse(detail.response));
-      setTimeout(this.notifyResize, 16);
+      setTimeout(this.notifyResize.bind(this), 500);
     }
   },
 
