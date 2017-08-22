@@ -291,6 +291,7 @@ Polymer({
   _directionsChanged: function(e, detail) {
     if (detail && detail.response) {
       this._setDirections(this._parseDirectionsResponse(detail.response));
+      setTimeout(this.notifyResize, 16);
     }
   },
 
