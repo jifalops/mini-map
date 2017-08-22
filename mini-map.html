@@ -27,6 +27,9 @@
       --mini-map-icon-height: 8px;
       --mini-map-icon-width: 8px;
     }
+    drag-resize {
+      display: block;
+    }
     google-map {
       height: var(--mini-map-height);
       width: var(--mini-map-width);
@@ -275,8 +278,8 @@ Polymer({
     if (enabled) {
       this.$.marker.open = false;
       if (!this.noGrow) {
-        this.$.container.style.minHeight = '200px';
-        this.$.container.style.minWidth = '200px';
+        this.$.map.style.minHeight = '200px';
+        this.$.map.style.minWidth = '200px';
       }
     }
   },
