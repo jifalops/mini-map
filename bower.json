@@ -15,18 +15,21 @@
     "google"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0",
+    "polymer": "^2.0.0",
     "iron-icon": "^2.0.0",
-    "google-map": "^1.2.0",
-    "iron-iconset-svg": "^2.0.1",
-    "text-toggle": "jifalops/text-toggle#^0.2.2",
-    "iron-collapse-button": "jifalops/iron-collapse-button#^1.0.0",
-    "drag-resize": "jifalops/drag-resize#^0.2.2"
+    "google-map": "^2.0.0",
+    "iron-iconset-svg": "^2.0.0",
+    "text-toggle": "^0.2.0",
+    "iron-collapse-button": "^0.4.0",
+    "drag-resize": "jifalops/drag-resize#^0.2.2",
+    "geo-location": "^2.0.0"
   },
   "devDependencies": {
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
-    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+    "iron-demo-helpers": "^2.0.0",
+    "iron-component-page": "^2.0.0",
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "^1.0.0",
+    "geo-codec": "^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"

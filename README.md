@@ -6,31 +6,30 @@ A drag-to-resize google-map with optional directions.
 ## Installation
 
 ```
-bower install --save jifalops/mini-map
+bower i -S mini-map  # Polymer 2.0 hybrid (1.x compatible)
 ```
 
 ## Demo
-Note: The demo is not working, but the element works when installed via bower.
 <!--
 ```
 <custom-element-demo>
-  <template is="dom-bind">
+  <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="mini-map.html">
+    <geo-codec id="codec" api-key="AIzaSyAUPOaJubJnaRTPUd_xX8MOA62gRtSlfCc"></geo-codec>
     <next-code-block></next-code-block>
     <script>
-      var lat = document.getElementById('lat');
-      var lng = document.getElementById('lng');
-      var refLat = document.getElementById('refLat');
-      var refLng = document.getElementById('refLng');
       var map = document.getElementById('map');
-      map.icon = 'marker.png';
-      function update() {
-        map.lat = Number(lat.value);
-        map.lng = Number(lng.value);
-        map.refLat = Number(refLat.value);
-        map.refLng = Number(refLng.value);
+      var codec = document.getElementById('codec');
+      var search = document.getElementById('search');
+      map.icon = '../marker.png';
+      function geocode() {
+        codec.geocode(search.value, function(address, lat, lng, place) {
+          map.lat = Number(lat);
+          map.lng = Number(lng);
+        });
       }
+      setTimeout(geocode, 500);
     </script>
   </template>
 </custom-element-demo>
@@ -38,12 +37,11 @@ Note: The demo is not working, but the element works when installed via bower.
 -->
 
 ```html
-<input id="lat" value="1"/>lat<br/>
-<input id="lng" value="1"/>lng<br/>
-<input id="refLat" value="2"/>refLat<br/>
-<input id="refLng" value="2"/>refLng<br/>
-<button onclick="update()">Update</button><br/>
-<mini-map id="map" api-key="AIzaSyAUPOaJubJnaRTPUd_xX8MOA62gRtSlfCc"></mini-map>
+<input id="search" value="usa" />
+<button onclick="geocode()">Search</button><br/>
+<mini-map id="map" api-key="AIzaSyAUPOaJubJnaRTPUd_xX8MOA62gRtSlfCc" zoom="3">
+  <span>Info</span>
+</mini-map>
 ```
 
 Full demo:
@@ -51,7 +49,6 @@ Full demo:
 | [github](https://jifalops.github.io/mini-map/components/mini-map/demo/).
 
 API: [webcomponents.org](https://www.webcomponents.org/element/jifalops/mini-map/mini-map)
-| [github](https://jifalops.github.io/mini-map).
 
 ## Contributing
 
