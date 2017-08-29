@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>mini-map demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../mini-map.html">
+    <link rel="import" href="../../geo-codec/geo-codec.html">
+
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic mini-map demo</h3>
+      <demo-snippet>
+        <template>
+          <geo-codec id="codec" api-key="AIzaSyAUPOaJubJnaRTPUd_xX8MOA62gRtSlfCc"></geo-codec>
+          <input id="search" value="usa" />
+          <button onclick="geocode()">Search</button><br/>
+          <mini-map id="map" api-key="AIzaSyAUPOaJubJnaRTPUd_xX8MOA62gRtSlfCc" zoom="3">
+            <span>Info</span>
+          </mini-map>
+          <script>
+            var map = document.getElementById('map');
+            var codec = document.getElementById('codec');
+            var search = document.getElementById('search');
+            map.icon = '../marker.png';
+            function geocode() {
+              codec.geocode(search.value, function(address, lat, lng, place) {
+                map.lat = Number(lat);
+                map.lng = Number(lng);
+              });
+            }
+            setTimeout(geocode, 500);
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

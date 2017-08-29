@@ -1,0 +1,37 @@
+{
+  "name": "iron-collapse-button",
+  "description": "An iron-collapse with a trigger section and optional expand/collapse icons.",
+  "main": "iron-collapse-button.html",
+  "authors": [
+    "Jacob Phillips (https://github.com/jifalops) <jifalops@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web-components",
+    "iron-collapse-button",
+    "iron",
+    "collapse",
+    "button"
+  ],
+  "dependencies": {
+    "polymer": "^2.0.0",
+    "iron-collapse": "^2.0.0"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "^2.0.0",
+    "iron-component-page": "^2.0.0",
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "^1.0.0"
+  },
+  "homepage": "https://github.com/jifalops/iron-collapse-button",
+  "version": "0.4.0",
+  "_release": "0.4.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.0",
+    "commit": "d433a5ad3e46ca45b66b9755ca6cb9fbf71397c5"
+  },
+  "_source": "https://github.com/jifalops/iron-collapse-button.git",
+  "_target": "^0.4.0",
+  "_originalSource": "iron-collapse-button"
+}

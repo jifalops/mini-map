@@ -1,0 +1,37 @@
+{
+  "name": "mini-map",
+  "description": "A drag-to-resize google-map with optional directions.",
+  "authors": [
+    "Jacob Phillips (https://github.com/jifalops)"
+  ],
+  "license": "MIT",
+  "main": "mini-map.html",
+  "keywords": [
+    "mini",
+    "map",
+    "drag",
+    "resize",
+    "directions",
+    "google"
+  ],
+  "dependencies": {
+    "polymer": "^2.0.0",
+    "iron-icon": "^2.0.0",
+    "google-map": "^2.0.0",
+    "iron-iconset-svg": "^2.0.0",
+    "text-toggle": "^0.2.0",
+    "iron-collapse-button": "^0.4.0",
+    "drag-resize": "jifalops/drag-resize#^0.2.2",
+    "geo-location": "^2.0.0"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "^2.0.0",
+    "iron-component-page": "^2.0.0",
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "^1.0.0",
+    "geo-codec": "^2.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  }
+}
